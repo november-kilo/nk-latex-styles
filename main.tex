@@ -1,0 +1,155 @@
+\documentclass[openany]{memoir}
+\usepackage{nk}
+\usepackage{kantlipsum}
+
+\title{\fontsize{56}{60}\usefont{OT1}{ppl}{m}{n}\selectfont NK \LaTeX{} styles}
+\author{Natasha Korol\"{e}va}
+\date{January 2019}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{Introduction}
+\epigraph{
+\emph{Villian, I have done thy mother.} \\
+Titus Andronicus --- Act IV, Scene ii}
+
+\section{A section}
+
+\kant[1]
+
+\subsection{A subsection}
+
+\kant[3]
+
+\subsubsection{A subsubsection}
+
+\kant[5]
+
+\chapter{Vector calculus}
+
+\section{Curl and divergence}\label{sect:curl-and-divergence}
+
+The curl of the vector field $\nkvecfield{F}{x,y,z}$ is
+\begin{equation}
+\mathrm{curl} \nkvecfield{F}{x, y, z} =
+\nkpar{\frac{\partial P}{\partial y} - \frac{\partial N}{\partial z}}\ihat
+-
+\nkpar{\frac{\partial P}{\partial x} - \frac{\partial M}{\partial z}}\jhat
++
+\nkpar{\frac{\partial N}{\partial x} - \frac{\partial M}{\partial y}}\khat
+\end{equation}
+Using the cross product notation for curl
+\begin{equation}
+\nabla \bm{\times} \nkvecfield{F}{x, y, z} =
+    \begin{bmatrix}
+        \ihat & \jhat & \khat \\[0.6em]
+        \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\[0.6em]
+        M & N & P\label{eq:curl}
+     \end{bmatrix}
+\end{equation}
+When $\mathrm{curl} \vec{F} = 0$, the vector field is conservative.
+
+\begin{mycode}
+\begin{exmp}
+Show that the vector field given by
+$\nkvecfield{F}{x,y,z}=2xy\ihat+\nkpar{x^2+y^2}\jhat+2yz\khat$ is
+conservative.
+\nksolution
+From \nkref{eq:curl}
+\begin{align}
+    \nabla \bm{\times} \nkvecfield{F}{x, y, z} &=
+        \begin{bmatrix}
+            \ihat & \jhat & \khat \\[0.6em]
+            \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\[0.6em]
+            2xy & x^2+z^2 & 2yz \\[0.6em]
+        \end{bmatrix} \\
+    &=
+        \begin{bmatrix}
+            \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\[0.6em]
+            x^2+z^2 & 2yz
+        \end{bmatrix}\ihat
+        -
+        \begin{bmatrix}
+            \frac{\partial}{\partial x} & \frac{\partial}{\partial z} \\[0.6em]
+            2xy & 2yz
+        \end{bmatrix}\jhat        
+        +
+        \begin{bmatrix}
+            \frac{\partial}{\partial x} & \frac{\partial}{\partial y} \\[0.6em]
+            2xy & x^2 + z^2
+        \end{bmatrix}\khat \\[0.6em]
+    &= \nkpar{2z-2z}\ihat - \nkpar{0-0}\jhat + \nkpar{2x-2x}\khat \\
+    &= 0
+\end{align}
+\end{exmp}
+\end{mycode}
+
+The divergence of the vector field $\nkvecfield{F}{x, y, z}$ is
+\begin{equation}
+    \mathrm{div} \nkvecfield{F}{x,y,z}=
+    \frac{\partial M}{\partial x} + \frac{\partial N}{\partial y} + \frac{\partial P}{\partial z}\label{eq:divergence}
+\end{equation}
+Using the dot product notation for divergence
+\begin{equation}
+    \mathrm{div}\vec{F} = \nabla \bm{\cdot} \vec{F}
+\end{equation}
+
+\begin{mycode}
+\begin{exmp}
+Given the vector field $\nkvecfield{F}{x,y,z}=\sin x\ihat + \cos y\jhat + z^2\khat$,
+find its divergence.
+\nksolution
+From \nkref{eq:divergence}
+\begin{align}
+    \mathrm{div} \nkvecfield{F}{x,y,z}&=\frac{\partial M}{\partial x} + \frac{\partial N}{\partial y} + \frac{\partial P}{\partial z} \\
+    &= \cos x - \sin y + 2z
+\end{align}
+\end{exmp}
+\end{mycode}
+
+\begin{nkremarkgood}
+The curl of a vector field is a vector field.
+If $\mathrm{curl}\vec{F}=0$, then the vector field is called irrotational.
+\end{nkremarkgood}
+
+\begin{nkremarkgood}
+The divergence of a vector field is a scalar function.
+If $\mathrm{div}\vec{F}=0$, then the vector field is called imcompressible.
+If the divergence is positive, then it is called a source.
+If the divergence is negative, then it is called a sink.
+\end{nkremarkgood}
+
+\chapter{Code syntax highlighting}
+
+\section{LPC}
+
+An example of DGD LPC.
+
+\shaded
+\begin{Verbatim}[commandchars=\\\{\}]
+    \nkcomment{// Vector.c}
+
+    \nkkeyword{private\ mixed}\ i\nkpunctuation{;}
+    \nkkeyword{private\ mixed}\ j\nkpunctuation{;}
+    \nkkeyword{private\ mixed}\ k\nkpunctuation{;}
+
+    \nkkeyword{private}\ \nkkeyword{int}\ \nkfunction{validComponents}\nkpunctuation{(}\nkkeyword{mixed}\ \nkoperator{*}components\nkpunctuation{)}\ \nkpunctuation{\{}
+        \nkkeyword{return}\ \nkconstant{TRUE}\nkpunctuation{;}
+    \nkpunctuation{\}}
+
+    \nkkeyword{Vector}\ \nkfunction{differentiate}\nkpunctuation{(}\nkpunctuation{)}\ \nkpunctuation{\{}
+        \nkkeyword{return}\ new\ \nkfunction{Vector}\nkpunctuation{(}i\nkoperator{->}\nkfunction{differentiate}\nkpunctuation{(}\nkpunctuation{)}\nkpunctuation{,}\ j\nkoperator{->}\nkfunction{differentiate}\nkpunctuation{(}\nkpunctuation{)}\nkpunctuation{,}\ k\nkoperator{->}\nkfunction{differentiate}\nkpunctuation{(}\nkpunctuation{)}\nkpunctuation{)}\nkpunctuation{;}
+    \nkpunctuation{\}}
+
+    \nkkeyword{static}\ \nkkeyword{void}\ \nkfunction{create}\nkpunctuation{(}\nkkeyword{mixed}\ \nkoperator{*}components\nkpunctuation{)}\ \nkpunctuation{\{}
+        \nkkeyword{if}\ \nkpunctuation{(}\nkfunction{validComponents}\nkpunctuation{(}components\nkpunctuation{)}\nkpunctuation{)}\ \nkpunctuation{\{}
+            \nkpunctuation{(}\nkpunctuation{\{}\ i\nkpunctuation{,}\ j\nkpunctuation{,}\ k\ \nkpunctuation{\}}\nkpunctuation{)}\ \nkoperator{=}\ components\nkpunctuation{;}
+        \nkpunctuation{\}}
+    \nkpunctuation{\}}
+\end{Verbatim}
+\endshaded
+
+\end{document}

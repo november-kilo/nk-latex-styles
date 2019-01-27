@@ -1,0 +1,129 @@
+\usepackage[math]{iwona}
+\usepackage{booktabs, amsmath, bm, eulervm, mathtools, fancyvrb, framed, textcomp, epigraph, titlesec, varioref, graphicx, pifont, tikz, amsthm, enumitem}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage[margin=2cm]{geometry}
+\usepackage[makeroom]{cancel}
+
+
+\renewcommand{\epigraphsize}{\footnotesize}
+\epigraphtextposition{flushright}
+\epigraphsourceposition{flushright}
+\setlength\epigraphwidth{\textwidth}
+\setlength{\epigraphrule}{0pt}
+
+\labelformat{equation}{Equation~(#1)}
+
+\theoremstyle{definition}
+\newtheorem{exmp}{Example}[section]
+\setlist{nolistsep}
+\numberwithin{equation}{chapter}
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\newcommand{\nksolution}{\par\textsc{Solution.}\ }
+\newcommand{\nknorm}[1]{\left\lVert#1\right\rVert}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\ans}[1]{\underline{\underline{#1}}}
+\let\oldhat\hat
+\renewcommand{\hat}[1]{\oldhat{\textbf{#1}}}
+\newcommand{\ihat}{\bm{\hat{\i}}}
+\newcommand{\jhat}{\bm{\hat{\j}}}
+\newcommand{\khat}{\bm{\hat{k}}}
+\newcommand{\nhat}{\bm{\hat{n}}}
+\newcommand{\That}{\bm{\hat{T}}}
+\newcommand{\uhat}{\bm{\hat{u}}}
+\newcommand{\nkcross}[2]{\vec{#1}\bm{\times}\vec{#2}}
+\newcommand{\nkref}[1]{\vref{#1}}
+\newcommand{\nkroot}[2]{\sqrt[\leftroot{0}\uproot{0}#1]{#2}}
+\newcommand{\nkpar}[1]{\left(#1\right)}
+\newcommand{\nkper}[1]{#1\%}
+\newcommand{\nkbrac}[1]{\left[#1\right]}
+\newcommand{\nkd}[1]{#1^{\circ}}
+\newcommand{\nkfunc}[2]{#1\nkpar{#2}}
+\newcommand{\nkvec}[1]{\nkfunc{\vec{#1}}{t}}
+\newcommand{\nkvecd}[1]{\nkfunc{\vec{\dot{#1}}}{t}}
+\newcommand{\nkvecdat}[2]{\nkfunc{\vec{\dot{#1}}}{#2}}
+\newcommand{\nkvecdd}[1]{\nkfunc{\vec{\ddot{#1}}}{t}}
+\newcommand{\nknv}[1]{\nknorm{\nkfunc{\vec{#1}}{t}}}
+\newcommand{\nknvd}[1]{\nknorm{\nkfunc{\vec{\dot{#1}}}{t}}}
+\newcommand{\nkvecfield}[2]{\nkfunc{\vec{#1}}{#2}}
+\newcommand{\nklineintegralvf}{\int_{\mathrm{C}}\vec{F} \bm{\cdot} d\vec{r}}
+
+
+\definecolor{nkremarkgoodcolor}{RGB}{102, 166, 30}
+\definecolor{nkremarkbadcolor}{RGB}{255, 51, 51}
+
+\newenvironment{nkremarkgood}{\par\vspace{10pt}\small
+\begin{list}{}{
+\leftmargin=35pt
+\rightmargin=25pt}\item\ignorespaces
+\makebox[-2.5pt]{\begin{tikzpicture}[overlay]
+\node[draw=nkremarkgoodcolor!60,line width=1pt,circle,fill=nkremarkgoodcolor!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{nkremarkgoodcolor}{\ding{51}}};\end{tikzpicture}}
+\advance\baselineskip -1pt}{\end{list}\vskip5pt}
+\newenvironment{nkremarkbad}{\par\vspace{10pt}\small
+\begin{list}{}{
+\leftmargin=35pt
+\rightmargin=25pt}\item\ignorespaces
+\makebox[-2.5pt]{\begin{tikzpicture}[overlay]
+\node[draw=nkremarkbadcolor!60,line width=1pt,circle,fill=nkremarkbadcolor!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{nkremarkbadcolor}{\ding{55}}};\end{tikzpicture}}
+\advance\baselineskip -1pt}{\end{list}\vskip5pt}
+
+
+\definecolor{nkmacropropertycol}{RGB}{153, 0, 85}
+\definecolor{nkdirectivekeywordcol}{RGB}{0, 119, 170}
+\definecolor{nkstringcol}{RGB}{102, 153, 0}
+\definecolor{nkkeywordcol}{RGB}{0, 119, 170}
+\definecolor{nkfunctioncol}{RGB}{221, 74, 104}
+\definecolor{nkpunctuationcol}{RGB}{153, 153, 153}
+\definecolor{nkoperatorcol}{RGB}{0, 0, 0}
+\definecolor{nknumbercol}{RGB}{153, 0, 85}
+\definecolor{nkconstantcol}{RGB}{153, 0, 85}
+\definecolor{shadecolor}{RGB}{245, 242, 240}
+
+\newcommand{\nkmacroproperty}[1]{{\color{nkmacropropertycol}#1}}
+\newcommand{\nkdirectivekeyword}[1]{{\color{nkdirectivekeywordcol}#1}}
+\newcommand{\nkstring}[1]{{\color{nkstringcol}#1}}
+\newcommand{\nkkeyword}[1]{{\color{nkkeywordcol}#1}}
+\newcommand{\nkfunction}[1]{{\color{nkfunctioncol}#1}}
+\newcommand{\nkpunctuation}[1]{{\color{nkpunctuationcol}#1}}
+\newcommand{\nkoperator}[1]{{\color{nkoperatorcol}#1}}
+\newcommand{\nknumber}[1]{{\color{nknumbercol}#1}}
+\newcommand{\nkconstant}[1]{{\color{nkconstantcol}#1}}
+\newcommand{\nkcomment}[1]{{\color{nkpunctuationcol}#1}}
+
+
+\definecolor{nksectioncolor}{RGB}{230, 171, 2}
+\definecolor{nksubsectioncolor}{RGB}{117, 112, 179}
+\definecolor{nksubsubsectioncolor}{RGB}{102, 166, 30}
+\titleformat{\section}{\normalfont\sffamily\Large\bfseries\color{nksectioncolor}}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\sffamily\large\bfseries\color{nksubsectioncolor}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\sffamily\bfseries\color{nksubsubsectioncolor}}{\thesubsubsection}{1em}{}
+
+\newenvironment{mycode}
+  {\begin{shaded}\ttfamily}
+  {\end{shaded}}
+
+\renewenvironment{shaded}{%
+  \def\FrameCommand{\FrameRestore\fboxsep=\FrameSep\colorbox{shadecolor}}%
+  \MakeFramed {\FrameRestore}}%
+ {\endMakeFramed}
+
+\usepackage[Bjornstrup]{fncychap}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection\hspace{5pt}#1}{}}
+\fancyhf{} \fancyhead[LE,RO]{\sffamily\normalsize\thepage}
+\fancyhead[LO]{\rightmark}
+\fancyhead[RE]{\leftmark}
+\renewcommand{\headrulewidth}{0.5pt}
+\addtolength{\headheight}{2.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}}
